@@ -2,6 +2,12 @@ FROM golang:1.16-alpine
 
 WORKDIR /app
 
-COPY main .
+COPY go.mod ./
 
-CMD [ "/main" ]
+RUN go mod download
+
+COPY *.go ./
+
+RUN go build -o /demo
+
+CMD [ "/demo" ]
