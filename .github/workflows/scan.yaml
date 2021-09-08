@@ -1,0 +1,19 @@
+name: Scan for Secrets
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  scan:
+    container:
+      image: codnam007/whispers
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+
+      - name: Scan Code with Whispers
+        id: scan
+        run: echo "::set-output name=whispers-scan::$(whispers -c whispers.yaml .)\n"
+  

@@ -1,0 +1,20 @@
+include:
+  files:
+    - "**/*"
+
+exclude:
+  files:
+    - ".git/**/*"
+    - ".vscode/**/*"
+    - "whispers.log"
+    - "**/locales/**/*"
+    - "**/spec/**/*"
+    - "**/specs/**/*"
+    - "**/venv/**/*"
+  keys:
+    - .*(public|project).*
+  values:
+    - ^(true|false|yes|no|1|0)$
+    - .*_(user|password|token|key|placeholder|name)$
+    - ^aws_(access_key_id|secret_access_key|session_token)$
+    - ^arn:aws:.*
