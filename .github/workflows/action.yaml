@@ -17,4 +17,4 @@ jobs:
           old_tag: ${{ github.sha }}
           new_tag: ikenna
           username: codnam007
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
