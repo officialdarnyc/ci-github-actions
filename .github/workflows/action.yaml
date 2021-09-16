@@ -14,11 +14,14 @@ jobs:
         run: |
           docker pull nginx:alpine
           docker tag nginx:alpine codnam007/nginx:ikenna
+          
 
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Push to DockerHub
         run: |
           docker push codnam007/nginx:ikenna
