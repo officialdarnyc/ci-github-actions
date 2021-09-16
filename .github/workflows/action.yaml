@@ -14,7 +14,7 @@ jobs:
         with:
           registry: docker.io
           name: nginx
-          old_tag: ${{ alpine }}
+          old_tag: alpine
           new_tag: ikenna
           username: codnam007
           password: ${{ secrets.DOCKERHUB_TOKEN }}
