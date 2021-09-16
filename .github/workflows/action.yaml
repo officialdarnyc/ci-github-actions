@@ -13,7 +13,7 @@ jobs:
         uses: koraykoska/retag-docker-image@0.2.4
         with:
           registry: docker.io
-          name: nginx
+          name: nginx/nginx
           old_tag: alpine
           new_tag: ikenna
           username: codnam007
