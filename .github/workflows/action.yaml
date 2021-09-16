@@ -1,0 +1,9 @@
+- name: Retag nginx to ikenna
+  uses: koraykoska/retag-docker-image@0.2.4
+  with:
+    registry: docker.io
+    name: nginx:alpine
+    old_tag: ${{ github.sha }}
+    new_tag: ikenna
+    username: codnam007
+    password: ${{ secrets.GITHUB_TOKEN }}
