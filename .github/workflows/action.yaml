@@ -4,6 +4,8 @@ on:
     branches:
       - ikenna
 
+  workflow_dispatch:
+
 jobs:
   retag:
     runs-on: ubuntu-latest
@@ -19,14 +21,14 @@ jobs:
       - name: Retag to ikenna
         run: |
           docker pull nginx:alpine
-          docker tag nginx:alpine officialdarnyc/nginx:${{ secrets.MAJOR }}
-          docker push officialdarnyc/nginx:${{ secrets.MAJOR }}
+          docker tag nginx:alpine officialdarnyc/nginx:v${{ secrets.MAJOR }}
+          docker push officialdarnyc/nginx:v${{ secrets.MAJOR }}
 
       - name: 'Update MAJOR version number'
         uses: hmanzur/actions-set-secret@v2.0.0
         with:
           name: 'MAJOR'
-          value: '(${{ secrets.MAJOR }} + 1)'
+          value: '$((${{ secrets.MAJOR }} + 1))'
           repository: ${{ github.repository }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
