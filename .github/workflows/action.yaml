@@ -18,7 +18,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Retag to ikenna
+      - name: Retag image
         run: |
           docker pull nginx:alpine
           docker tag nginx:alpine officialdarnyc/nginx:v${{ secrets.MAJOR }}
@@ -28,7 +28,7 @@ jobs:
         uses: hmanzur/actions-set-secret@v2.0.0
         with:
           name: 'MAJOR'
-          value: $(${{ secrets.MAJOR }} + 1)
+          value: (${{ secrets.MAJOR }} + 1)
           repository: ${{ github.repository }}
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
