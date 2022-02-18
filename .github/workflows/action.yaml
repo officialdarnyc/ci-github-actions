@@ -22,8 +22,8 @@ jobs:
       - name: Retag image
         run: |
           docker pull nginx:alpine
-          docker tag nginx:alpine officialdarnyc/nginx:v${{ github.run.number }}
-          docker push officialdarnyc/nginx:v${{ github.run.number }}
+          docker tag nginx:alpine officialdarnyc/nginx:v${{ github.run_number }}
+          docker push officialdarnyc/nginx:v${{ github.run_number }}
 
       #- name: 'Update MAJOR version number'
        # uses: hmanzur/actions-set-secret@v2.0.0
