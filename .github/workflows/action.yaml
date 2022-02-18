@@ -18,17 +18,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Set version number
-        run: |
-          $version = "(1+$($Env:GITHUB_RUN_NUMBER))"
-          echo $version
-          echo "VERSION_NUMBER=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
 
       - name: Retag image
         run: |
           docker pull nginx:alpine
-          docker tag nginx:alpine officialdarnyc/nginx:v${{ env.VERSION_NUMBER }}
-          docker push officialdarnyc/nginx:v${{ env.VERSION_NUMBER }}
+          docker tag nginx:alpine officialdarnyc/nginx:v${{ github.run.number }}
+          docker push officialdarnyc/nginx:v${{ github.run.number }}
 
       #- name: 'Update MAJOR version number'
        # uses: hmanzur/actions-set-secret@v2.0.0
