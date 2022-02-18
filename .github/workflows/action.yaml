@@ -22,14 +22,13 @@ jobs:
         uses: einaregilsson/build-number@v3
         id: buildnumber
         with:
-          prefix: v
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
 
       - name: Retag image
         run: |
           docker pull nginx:alpine
-          docker tag nginx:alpine officialdarnyc/nginx:${{ steps.buildnumber.outputs.build_number }}
-          docker push officialdarnyc/nginx:${{ steps.buildnumber.outputs.build_number }}
+          docker tag nginx:alpine officialdarnyc/nginx:v${{ steps.buildnumber.outputs.build_number }}
+          docker push officialdarnyc/nginx:v${{ steps.buildnumber.outputs.build_number }}
 
 
           
