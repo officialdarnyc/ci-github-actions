@@ -4,6 +4,10 @@ on:
     branches:
       - ikenna
 
+  pull_request:
+    branches:
+      - ikenna
+
   workflow_dispatch:
 
 jobs:
